@@ -20,6 +20,14 @@ export default function NoteOperations() {
                     className={styles.input}
                     placeholder='Enter the Title..'/>
             </div>
+
+            {isInputVisible ? (
+                <div className={styles.inputContainer}>
+                    <input className={styles.input} placeholder='Enter the Title..' />
+                </div>
+            ) : (
+                <></>
+            )}
         </>
     )
 }
