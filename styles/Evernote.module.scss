@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .container {
     display: flex;
     margin: 10px;
@@ -5,4 +7,15 @@
 
 .left{
     width: 20rem;
+}
+
+
+.button {
+    width: 15rem;
+    height: 2rem;
+    cursor: pointer;
+    background-color: black;
+    color: whitesmoke;
+    border: black;
+    font-family: 'Roboto';
 }
