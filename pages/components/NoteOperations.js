@@ -2,16 +2,15 @@ import styles from '../../styles/Evernote.module.scss'
 import { useState, useEffect } from 'react';
 import { app, database } from '../../firebaseConfig';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
-import ReactQuill from 'react-quill';
+const ReactQuill = typeof window === 'object' ? require('react-quill') : () => false;
 import 'react-quill/dist/quill.snow.css';
 
 const dbInstance = collection(database, 'notes');
-export default function NoteOperations({getSingleNote}) {
+export default function NoteOperations({ getSingleNote }) {
     const [isInputVisible, setInputVisible] = useState(false);
     const [noteTitle, setNoteTitle] = useState('');
-    const [noteDesc, setNoteDesc] = useState('')
+    const [noteDesc, setNoteDesc] = useState('');
     const [notesArray, setNotesArray] = useState([]);
-
     const inputToggle = () => {
         setInputVisible(!isInputVisible)
     }
@@ -20,7 +19,7 @@ export default function NoteOperations({getSingleNote}) {
         setNoteDesc(value)
     }
 
-const saveNote = () => {
+    const saveNote = () => {
         addDoc(dbInstance, {
             noteTitle: noteTitle,
             noteDesc: noteDesc
@@ -32,7 +31,7 @@ const saveNote = () => {
             })
     }
 
- const getNotes = () => {
+    const getNotes = () => {
         getDocs(dbInstance)
             .then((data) => {
                 setNotesArray(data.docs.map((item) => {
@@ -42,9 +41,8 @@ const saveNote = () => {
     }
 
     useEffect(() => {
-    getNotes();
+        getNotes();
     }, [])
-
     return (
         <>
             <div className={styles.btnContainer}>

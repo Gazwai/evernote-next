@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Evernote.module.scss'
 import NoteOperations from './components/NoteOperations';
 import NoteDetails from './components/NoteDetails';
-
+import { useState } from 'react';
 
 export default function Home() {
   const [ID, setID] = useState(null);
@@ -17,20 +17,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main>
         <div className={styles.container}>
           <div className={styles.left}>
-            <NoteOperations getSingleNote={getSingleNote}/>
+            <NoteOperations getSingleNote={getSingleNote} />
           </div>
           <div className={styles.right}>
-	          <NoteDetails ID={ID}/>
+            <NoteDetails ID={ID} />
           </div>
         </div>
       </main>
-
-      {/* <footer className={styles.footer}>
-
-      </footer> */}
     </div>
   )
 }

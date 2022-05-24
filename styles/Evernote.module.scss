@@ -10,11 +10,11 @@ $gray: gray;
 }
 
 .left {
-    width: 20rem;
+    width: 30rem;
 }
 
 .button {
-    width: 15rem;
+    width: 25rem;
     height: 2rem;
     cursor: pointer;
     background-color: $black;
@@ -24,7 +24,7 @@ $gray: gray;
 }
 
 .input {
-    width: 15rem;
+    width: 25rem;
     height: 2rem;
     outline: none;
     border-radius: 5px;
@@ -33,7 +33,7 @@ $gray: gray;
 }
 
 .saveBtn {
-    width: 15rem;
+    width: 25rem;
     height: 2rem;
     cursor: pointer;
     background-color: $dark-red;
@@ -43,14 +43,14 @@ $gray: gray;
 }
 
 .ReactQuill{
-    width: 15rem;
+    width: 25rem;
 }
 
 .notesInner{
     margin-top: 0.5rem;
     border: 1px solid $dark-red;
     border-radius: 10px;
-    width: 15rem;
+    width: 25rem;
     text-align: center;
     cursor: pointer;
     font-family: "Roboto";
@@ -59,4 +59,14 @@ $gray: gray;
 .notesInner:hover{
     background-color: rgb(119, 27, 27);
     color: $whiteSmoke;
+}
+
+.editBtn, .deleteBtn{
+    width: 5rem;
+    height: 2rem;
+    background-color: rgb(119, 27, 27);
+    color: $whiteSmoke;
+    border: none;
+    cursor: pointer;
+    margin: 10px 10px 10px 0;
 }
