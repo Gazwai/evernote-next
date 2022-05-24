@@ -6,6 +6,7 @@ export default function NoteOperations() {
     const inputToggle = () => {
         setInputVisible(!isInputVisible)
     }
+    const [noteTitle, setNoteTitle] = useState('');
     return (
         <>
             <div className={styles.btnContainer}>
@@ -15,11 +16,13 @@ export default function NoteOperations() {
                 </button>
             </div>
 
-            <div className={styles.inputContainer}>
-                <input
+<div className={styles.inputContainer}>
+                    <input
                     className={styles.input}
-                    placeholder='Enter the Title..'/>
-            </div>
+                    placeholder='Enter the Title..'
+                    onChange={(e) => setNoteTitle(e.target.value)}
+                    />
+                </div>
 
             {isInputVisible ? (
                 <div className={styles.inputContainer}>
