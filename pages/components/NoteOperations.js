@@ -1,7 +1,7 @@
 import styles from '../../styles/Evernote.module.scss'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { app, database } from '../../firebaseConfig';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -28,6 +28,18 @@ export default function NoteOperations() {
                 setNoteDesc('')
             })
     }
+
+    const getNotes = () => {
+        getDocs(dbInstance)
+            .then((data) => {
+                console.log(data);
+            })
+    }
+
+    useEffect(() => {
+    getNotes();
+    }, [])
+
     return (
         <>
             <div className={styles.btnContainer}>
