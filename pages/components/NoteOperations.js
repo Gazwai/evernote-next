@@ -6,10 +6,12 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
 const dbInstance = collection(database, 'notes');
-export default function NoteOperations() {
+export default function NoteOperations({getSingleNote}) {
     const [isInputVisible, setInputVisible] = useState(false);
     const [noteTitle, setNoteTitle] = useState('');
     const [noteDesc, setNoteDesc] = useState('')
+    const [notesArray, setNotesArray] = useState([]);
+
     const inputToggle = () => {
         setInputVisible(!isInputVisible)
     }
@@ -18,7 +20,7 @@ export default function NoteOperations() {
         setNoteDesc(value)
     }
 
-    const saveNote = () => {
+const saveNote = () => {
         addDoc(dbInstance, {
             noteTitle: noteTitle,
             noteDesc: noteDesc
@@ -26,13 +28,16 @@ export default function NoteOperations() {
             .then(() => {
                 setNoteTitle('')
                 setNoteDesc('')
+                getNotes();
             })
     }
 
-    const getNotes = () => {
+ const getNotes = () => {
         getDocs(dbInstance)
             .then((data) => {
-                console.log(data);
+                setNotesArray(data.docs.map((item) => {
+                    return { ...item.data(), id: item.id }
+                }));
             })
     }
 
@@ -73,6 +78,18 @@ export default function NoteOperations() {
             ) : (
                 <></>
             )}
+
+            <div className={styles.notesDisplay}>
+                {notesArray.map((note) => {
+                    return (
+                        <div
+                            className={styles.notesInner}
+                            onClick={() => getSingleNote(note.id)}>
+                            <h4>{note.noteTitle}</h4>
+                        </div>
+                    )
+                })}
+            </div>
         </>
     )
 }
