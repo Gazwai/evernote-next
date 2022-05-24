@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Evernote.module.scss'
 
 export default function Home() {
   return (
@@ -16,6 +16,10 @@ export default function Home() {
           <div className={styles.right}>Right</div>
         </div>
       </main>
+
+      {/* <footer className={styles.footer}>
+
+      </footer> */}
     </div>
   )
 }
